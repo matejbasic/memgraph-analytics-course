@@ -36,7 +36,7 @@ def get_ingredients(processed_ingredients, recipe_ingredients):
     }))
 
 
-def get_processed_recipes(max_recipes_count=20):
+def get_processed_recipes(max_recipes_count=100):
     processed_ingredients, recipes = load_raw_data()
     for recipe in recipes[:max_recipes_count]:
         if recipe.get("title") and recipe.get("ingredients"):
