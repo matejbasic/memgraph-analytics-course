@@ -1,6 +1,9 @@
 import json
+import os
 
-OUTPUT_FILE_PATH = "processed_recipes.json"
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+
+OUTPUT_FILE_PATH = f"{DIR_PATH}/processed_recipes.json"
 
 
 def save(data, file_path=OUTPUT_FILE_PATH):
