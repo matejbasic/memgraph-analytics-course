@@ -8,4 +8,5 @@
 2. https://www.kaggle.com/hugodarwood/epirecipes
     - list of recipes
    
-and it's a list od Recipe dataclasses (see `schema.py`).
+and it's a list od dictionaries representing recipes with the
+title and list of ingredients.
