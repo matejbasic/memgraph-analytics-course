@@ -4,7 +4,6 @@ import re
 import numpy as np
 
 import dataset
-from schema import Recipe
 
 INGREDIENTS_BLACKLIST = [
     "chopped", "sliced", "leaves", "a", "imported", "temperature", "accompaniment", "blend", "dry", "fresh",
@@ -31,23 +30,24 @@ def find_ingredient(processed_ingredients, ingredient_raw):
 
 
 def get_ingredients(processed_ingredients, recipe_ingredients):
-    return list(filter(None, [
+    return list(filter(None, {
         find_ingredient(processed_ingredients, ingredient_raw.lower())
         for ingredient_raw in recipe_ingredients
-    ]))
+    }))
 
 
-def get_processed_recipes(max_recipes_count=2000):
+def get_processed_recipes(max_recipes_count=20):
     processed_ingredients, recipes = load_raw_data()
     for recipe in recipes[:max_recipes_count]:
-        title = recipe["title"]
-        recipe_ingredients = get_ingredients(processed_ingredients, recipe["ingredients"])
-        yield title, recipe_ingredients
+        if recipe.get("title") and recipe.get("ingredients"):
+            title = recipe["title"]
+            recipe_ingredients = get_ingredients(processed_ingredients, recipe["ingredients"])
+            yield title, recipe_ingredients
 
 
 if __name__ == "__main__":
     recipes = [
-        Recipe(title=recipe_title, ingredients=ingredients)
+        {"title": recipe_title, "ingredients": ingredients}
         for recipe_title, ingredients in get_processed_recipes()
     ]
     dataset.save(recipes)
