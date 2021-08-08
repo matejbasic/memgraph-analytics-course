@@ -16,6 +16,8 @@ cachetools==4.2.2
     # via google-auth
 certifi==2021.5.30
     # via requests
+chardet==4.0.0
+    # via -r requirements.in
 charset-normalizer==2.0.4
     # via requests
 cycler==0.10.0
