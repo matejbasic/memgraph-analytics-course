@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 import json
 
-import tag_resolvers
+from . import tag_resolvers
 
 
 ORIGINAL_DATASET_PATH: str = "processed_recipes.json"
