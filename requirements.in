@@ -6,3 +6,5 @@ gensim
 stellargraph
 chardet
 python-slugify
+Flask
+gqlalchemy
